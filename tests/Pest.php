@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use Tests\TestCase;
-
 /*
 |--------------------------------------------------------------------------
 | Test Case
@@ -15,10 +13,22 @@ use Tests\TestCase;
 |
 */
 
-pest()->extend(TestCase::class)
- // ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
-    ->in('Feature');
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Sleep;
+use Illuminate\Support\Str;
+use Tests\TestCase;
 
+pest()->extend(TestCase::class)
+    ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
+    ->beforeEach(function () {
+        Str::createRandomStringsNormally();
+        Str::createUuidsNormally();
+        Http::preventStrayRequests();
+        Sleep::fake();
+
+        $this->freezeTime();
+    })
+    ->in('Feature', 'Unit');
 /*
 |--------------------------------------------------------------------------
 | Expectations
@@ -44,8 +54,3 @@ expect()->extend('toBeOne', function () {
 | global functions to help you to reduce the number of lines of code in your test files.
 |
 */
-
-function something(): void
-{
-    // ..
-}
