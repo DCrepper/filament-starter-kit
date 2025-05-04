@@ -12,15 +12,15 @@ declare(strict_types=1);
 | need to change it using the "pest()" function to bind a different classes or traits.
 |
 */
-
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Sleep;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
 pest()->extend(TestCase::class)
-    ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
-    ->beforeEach(function () {
+    ->use(RefreshDatabase::class)
+    ->beforeEach(function (): void {
         Str::createRandomStringsNormally();
         Str::createUuidsNormally();
         Http::preventStrayRequests();

@@ -15,6 +15,7 @@ final class User extends Authenticatable implements FilamentUser
 {
     use HasFactory;
     use Notifiable;
+
     /**
      * The attributes that are mass assignable.
      *
