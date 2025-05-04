@@ -1,59 +1,44 @@
 # Filament Starter Kit
 
-Filament Starter Kit is a distribution of [Filament](https://filamentphp.com/) with a variety of pre-installed components. And remember, simple things are the best for your starting point.
+Filament Starter Kit is a distribution of [Filament](https://filamentphp.com/) with a variety of pre-installed components. Simple things are the best for your starting point.
 
 ## New Installation
 
-To install Filament Starter Kit, use the following composer command:
+To install Filament Starter Kit, run:
 
 ```bash
 composer create-project dcrepper/filament-starter-kit
 ```
 
-After installation, run migrations:
+After installation, run the migrations:
 
 ```bash
 php artisan migrate
 ```
 
-Create the first/admin user:
+Create the first (admin) user:
 
 ```bash
 php artisan make:filament-user
 ```
 
-Initialize Filament Shield:
-
-```bash
-php artisan shield:install
-```
-
-During the Filament Shield installation, respond with "yes" to all the questions.
-
-## Seed First Tenant 
-
-Customize your tenant team name in `database\Seeders\FirstTenantSeeder`. The default team name is 'Min Shin Saw'.
-
-```php
-Team::create([
-    'name' => 'dev',
-    'slug' => 'dev',
-])->users()->attach(User::find(1));
-```
-
-Then run the following command:
+Then seed the database:
 
 ```bash
 php artisan db:seed
 ```
 
-Visit `/admin` on your site, and you should see the Filament login screen. Log in with the user created in step #4.
+Visit `/admin` on your site to see the Filament login screen.  
+Log in with the user created in step #4.
 
-All relevant migrations, views, and config files have been published to the main Laravel directory tree in the expected locations. If a package, such as the Spatie packages, is based on another package, the base package migrations and config files are also published.
+All relevant migrations, views, and config files have been published to the main Laravel directory tree in the expected locations.  
+If a package (such as a Spatie package) is based on another package, the base package migrations and config files are also published.
 
 # Production Section
-When it comes to production, make sure you implement FilamentUser in your User Model, and add canAccessPanel function
-reference: https://filamentphp.com/docs/3.x/panels/installation#deploying-to-production
 
-## License 
+For production, ensure you implement `FilamentUser` in your User model and add the `canAccessPanel` function.  
+See the [Filament documentation](https://filamentphp.com/docs/3.x/panels/installation#deploying-to-production) for details.
+
+## License
+
 The MIT License. Please see [the license file](LICENSE.md) for more information.
