@@ -7,4 +7,4 @@ arch()->preset()->php();
 arch()->preset()->laravel();
 arch()->preset()->security();
 arch()->expect('App\Models')->toBeClasses()->toExtend('Illuminate\Database\Eloquent\Model');
-arch('App\Controllers\Controller is abstract')->expect('App\Controllers\Controller')->toBeAbstract();
+arch()->expect('App\Controllers\Controller')->toBeAbstract();
